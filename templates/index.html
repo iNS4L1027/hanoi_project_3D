@@ -1,10 +1,110 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 하노이의 탑</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Three.js 모듈 주소 설정 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module" src="/static/script.js"></script>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <header>
+        <h1>3D 하노이의 탑</h1>
+        <p class="subtitle">
+            자료구조 과제 · fastapi·uvicorn·jinja2·three.js
+        </p>
+    </header>
+
+    <section class="controls">
+        <label for="diskCount">원판 개수</label>
+        <input id="diskCount" type="number"
+               min="1" max="15" value="3">
+
+        <button id="startButton">실행</button>
+        <button id="pauseButton" class="secondary" disabled>
+            일시정지
+        </button>
+        <button id="resetButton" class="secondary">
+            초기화
+        </button>
+    </section>
+
+    <section class="settings">
+        <label for="speed">이동 간격</label>
+        <input id="speed" type="range"
+               min="0" max="2" step="0.05" value="0.25">
+        <span id="speedLabel">0.25초</span>
+    </section>
+
+    <div class="camera-tip">
+        마우스 드래그: 회전 · 휠: 확대/축소 · 우클릭 드래그: 이동
+    </div>
+
+    <!-- Three.js 3D 장면이 표시되는 영역 -->
+    <div id="scene-container">
+        <div id="loading">3D 화면을 준비하고 있습니다...</div>
+    </div>
+
+    <div class="info" id="status">
+        원판 개수를 선택하고 실행하세요.
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <section class="project-info">
+        <h2>프로젝트 소개</h2>
+        <p>
+            FastAPI와 JavaScript를 활용하여 하노이의 탑 알고리즘을
+            3D 공간에서 시각화하는 웹 애플리케이션임
+            입체 원판의 이동 과정을 관찰하면서 재귀 알고리즘의
+            동작 원리를 이해할 수 있음
+        </p>
+
+        <h2>사용 기술</h2>
+        <div class="tech-list">
+            <div class="tech-item">
+                <h3>Python · FastAPI</h3>
+                <p>웹 서버를 구성하고 페이지를 제공함</p>
+            </div>
+            <div class="tech-item">
+                <h3>HTML · CSS</h3>
+                <p>페이지 구조와 인터페이스 디자인을 담당함</p>
+            </div>
+            <div class="tech-item">
+                <h3>JavaScript</h3>
+                <p>이동 순서 계산과 애니메이션을 처리함</p>
+            </div>
+            <div class="tech-item">
+                <h3>Three.js</h3>
+                <p>3D 객체, 재질, 조명, 그림자와 카메라를 구현함</p>
+            </div>
+        </div>
+
+        <h2>알고리즘 설명</h2>
+
+
+        <div class="formula">
+            최소 이동 횟수 = 2<sup>n</sup> - 1
+        </div>
+    </section>
+</div>
+
 </body>
 </html>
